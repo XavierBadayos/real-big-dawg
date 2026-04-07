@@ -1,5 +1,6 @@
 import { fetchAllPlayerStats } from '@/api/playerStatsApi'
-import { createFileRoute, useLoaderData } from '@tanstack/react-router'
+import { PlayerCardList } from '@/components/players/PlayerCardList';
+import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/players/')({
   component: Players,
@@ -7,10 +8,11 @@ export const Route = createFileRoute('/players/')({
 })
 
 function Players() {
-  const data = Route.useLoaderData();
+  const data = Route.useLoaderData() ?? [];
 
   return (
-    <div className='p-12 grid grid-cols-5 gap-4'>
+    <div className='p-12 gap-4'>
+      <PlayerCardList data={data}/>
     </div>
   )
 }
