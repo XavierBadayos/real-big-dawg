@@ -4,6 +4,7 @@ export interface PlayerCardData {
   nickname: string | number;
   teamId: string | number;
   teamAbbreviation: string | number;
+  playerImage: string;
   gp: string | number;
   w: string | number;
   l: string | number;

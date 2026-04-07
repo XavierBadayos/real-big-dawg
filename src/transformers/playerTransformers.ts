@@ -11,6 +11,7 @@ export function transformPlayerStatsResponseToPlayerCards(response: AllPlayerSta
         nickname: row[IDX.NICKNAME],
         teamId: row[IDX.TEAM_ID],
         teamAbbreviation: row[IDX.TEAM_ABBREVIATION],
+        playerImage: `https://cdn.nba.com/headshots/nba/latest/260x190/${row[IDX.PLAYER_ID]}.png`,
         gp: row[IDX.GP],
         w: row[IDX.W],
         l: row[IDX.L],
