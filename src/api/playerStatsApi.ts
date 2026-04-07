@@ -1,6 +1,6 @@
 import { transformPlayerStatsResponseToPlayerCards } from "@/transformers/playerTransformers";
 import type { AllPlayerStatsResponse } from "@/types/AllPlayerStatsResponse";
-import type { PlayerCard } from "@/types/PlayerCard";
+import type { PlayerCardData } from "@/types/PlayerCard";
 import { createServerFn } from "@tanstack/react-start";
 
 export const fetchAllPlayerStats = createServerFn({method: "GET"}).handler(async () => {
@@ -26,7 +26,7 @@ export const fetchAllPlayerStats = createServerFn({method: "GET"}).handler(async
         }
 
         const responseData: AllPlayerStatsResponse = await response.json();
-        const data: PlayerCard[] = transformPlayerStatsResponseToPlayerCards(responseData);
+        const data: PlayerCardData[] = transformPlayerStatsResponseToPlayerCards(responseData);
         return data;
 
     }   catch (error) {

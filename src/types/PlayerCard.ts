@@ -1,4 +1,4 @@
-export interface PlayerCard {
+export interface PlayerCardData {
   id: string | number;
   name: string | number;
   nickname: string | number;

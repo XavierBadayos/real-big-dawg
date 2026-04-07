@@ -1,8 +1,8 @@
 import type { AllPlayerStatsResponse } from "@/types/AllPlayerStatsResponse"
-import type { PlayerCard } from "@/types/PlayerCard"
+import type { PlayerCardData } from "@/types/PlayerCard"
 import { IDX } from "./AllPlayerStatsIndexMap";
 
-export function transformPlayerStatsResponseToPlayerCards(response: AllPlayerStatsResponse): PlayerCard[] {
+export function transformPlayerStatsResponseToPlayerCards(response: AllPlayerStatsResponse): PlayerCardData[] {
     const rowSets = response.resultSets[0].rowSet;
 
     const playerCards = rowSets.map(row => ({

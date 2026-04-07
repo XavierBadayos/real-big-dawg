@@ -1,14 +1,20 @@
+import type { PlayerCardData } from "@/types/PlayerCard"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card"
 
-export const PlayerCard = ({data}: any) => {
+interface PlayerCardProps {
+  data: PlayerCardData 
+}
+
+export const PlayerCard = ({data}: PlayerCardProps) => {
   return (
     <Card>
+      <img src={`https://cdn.nba.com/headshots/nba/latest/260x190/${data.id}.png`} alt={data.nickname as string}/>
       <CardHeader>
-        <CardTitle>Kawhi Leonard</CardTitle>
-        <CardDescription>The Klaw</CardDescription>
+        <CardTitle></CardTitle>
+        <CardDescription></CardDescription>
       </CardHeader>
       <CardContent>
-        <p>Boardman gets paid.</p>
+        <p></p>
       </CardContent>
     </Card>
   )
