@@ -21,18 +21,34 @@ export const PlayerCard = ({data}: PlayerCardProps) => {
           <p>{data.ast} ast</p>
         </CardDescription>
       </CardHeader>
-      <CardContent className="grid grid-cols-2">
-        <div>
-          <p>{data.min} MIN</p>
-          <p>{data.fga} FGA</p>
-          <p>{(data.fgPct as number * 100).toFixed(1)} FG%</p>
+      <CardContent className="flex justify-start gap-9">
+        <div className="flex gap-3">
+          <div className="font-medium">
+            <p>{data.min}</p>
+            <p>{data.fga}</p>
+            <p>{(data.fgPct as number * 100).toFixed(1)}</p>
+          </div>
+          <div>
+            <p>MIN</p>
+            <p>FGA</p>
+            <p>FG%</p>
+          </div>
         </div>
-        <div>
-          <p>{(data.fga as number).toFixed(1)} FTA</p>
-          <p>{(data.fta as number).toFixed(1)} FT%</p>
-          <p>{data.w}-{data.l} W-L</p>
+        
+        <div className="flex gap-3">
+          <div className="font-medium">
+          <p>{(data.fga as number).toFixed(1)}</p>
+          <p>{(data.fta as number).toFixed(1)}%</p>
+          <p>{data.w}-{data.l}</p>
+          </div>
+          <div>
+            <p>FTA</p>
+            <p>FT%</p>
+            <p>W-L</p>
+          </div>
         </div>
+        
       </CardContent>
-    </Card> 
+    </Card>
   )
 }
