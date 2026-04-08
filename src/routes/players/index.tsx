@@ -8,8 +8,8 @@ import { createFileRoute, Link } from '@tanstack/react-router'
 const playerQuery = queryOptions({
   queryKey: ['players'],
   queryFn: () => fetchAllPlayerStats(),
-  staleTime: 1000 * 60 * 60,
-  gcTime: 1000 * 60 * 60,
+  staleTime: 1000 * 60 * 60 * 4,
+  gcTime: 1000 * 60 * 60 * 24,
 })
 
 export const Route = createFileRoute('/players/')({
