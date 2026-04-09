@@ -1,5 +1,4 @@
 import { fetchAllPlayerStats } from '@/api/playerStatsApi'
-import { PlayerCardList } from '@/components/players/PlayerCardList';
 import { PlayerStatsTable } from '@/components/players/PlayerStatsTable';
 import { ModeToggle } from '@/components/theme/theme-toggle';
 import type { PlayerStats } from '@/types/PlayerStats';
