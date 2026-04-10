@@ -24,7 +24,7 @@ export const PlayerStatsHub = ({data}: PlayerStatsHubProps) => {
   const rowsPerPage = 50;
   const pages = Array.from({length: Math.ceil(data.length / rowsPerPage)}, (_, i) => i + 1);
   const [page, setPage] = useState("1");
-  const [sortedCategory, setSortedCategory] = useState<Category>({label: "gp", direction: "desc"});
+  const [sortedCategory, setSortedCategory] = useState<Category>({label: "pts", direction: "desc"});
   const paginatedData = page === "All" ? sortData(data, sortedCategory) : sortData(data, sortedCategory).slice((Number(page) - Number(1)) * rowsPerPage, Number(page) * rowsPerPage);
 
   const categories = playerStatsTableColumns.map(col => ({label: col.label, value: col.value}));
@@ -134,11 +134,11 @@ export const PlayerStatsHub = ({data}: PlayerStatsHubProps) => {
       </div>
 
       {view === "table" ? (
-        <PlayerStatsTable data={paginatedData} />
+        <PlayerStatsTable data={paginatedData} sortedCategory={sortedCategory} setSortedCategory={setSortedCategory} />
       ) : view === "card" ? (
         <PlayerCardList data={paginatedData} />
       ) : (
-        <PlayerStatsTable data={paginatedData} />
+        <PlayerStatsTable data={paginatedData} sortedCategory={sortedCategory} setSortedCategory={setSortedCategory} />
       )}
     </div>
   )

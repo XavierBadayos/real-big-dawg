@@ -4,9 +4,11 @@ import { playerStatsTableColumns } from "./PlayerStatsTableColumns";
 
 interface PlayerStatsTableProps{
   data: PlayerStats[];
+  sortedCategory: {label: keyof PlayerStats; direction: string;}
+  setSortedCategory: React.Dispatch<React.SetStateAction<{label: keyof PlayerStats; direction: string;}>>;
 }
 
-export const PlayerStatsTable = ({data}: PlayerStatsTableProps) => {
+export const PlayerStatsTable = ({data, sortedCategory, setSortedCategory}: PlayerStatsTableProps) => {
 const columns = playerStatsTableColumns;
 
 return (
@@ -15,7 +17,7 @@ return (
     <TableHeader>
       <TableRow>
         {columns.map(c => 
-          <TableHead key={c.label}>{c.label}</TableHead>
+          <TableHead key={c.label} onClick={() => setSortedCategory({label: c.value as keyof PlayerStats, direction: sortedCategory.direction})}>{c.label}</TableHead>
         )}
       </TableRow>
     </TableHeader>
