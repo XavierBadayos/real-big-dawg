@@ -1,4 +1,5 @@
 export const playerStatsTableColumns = [
+  // label is displayed, value is for sorting as it matches the property names of thePlayerStats interface
   { label: "Name", value: "name", className: "min-w-[200px] w-[200px]" },
   { label: "Team", value: "teamAbbreviation" },
   { label: "Age", value: "age", className: "text-right" },
