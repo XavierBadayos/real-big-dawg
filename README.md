@@ -1,6 +1,7 @@
-# Real Big Dawg
+# Stat Muncher
 
-It's REAL BIG DAWGS ONLY gng 🦴🐺
+NBA stats filter and sort.
+
 
 ## Getting Started
 
