@@ -5,21 +5,35 @@ import { conditionsArray, operatorsArray } from "./operators"
 import { playerStatsTableColumns } from "./PlayerStatsTableColumns"
 
 interface StatsFilterProps{
-  data: Filter
+  data: Filter;
+  filters: Filter[];
+  setFilters: React.Dispatch<React.SetStateAction<Filter[]>>;
 }
 
-export const StatsFilter = ({data}: StatsFilterProps) => {
+export const StatsFilter = ({data, filters, setFilters}: StatsFilterProps) => {
   const columns = playerStatsTableColumns;
   const operators = operatorsArray;
   const conditions = conditionsArray;
 
+  function handleParameterChange(key: keyof Filter, value: string | number) {
+    const index = Number(data.index);
+    const updatedFilter = {...data, [key]: value };
+
+    if (-1 === index) {
+      return setFilters([...filters, updatedFilter]);
+    }
+
+    setFilters([...filters.slice(0, index), updatedFilter, ...filters.slice(index + 1)])
+  }
+
   return (
-    <div className="flex">
-      <Select defaultValue={data.stat} items={columns}>
+    <div id={data.index} className="flex">
+      {/* Doing some very messy things. We lie to the compiler and we trust user input. How terrible is that! */}
+      <Select defaultValue="name" items={columns} onValueChange={(e) => handleParameterChange("stat", e as string | number)}> 
         <SelectTrigger className={"w-25 rounded-r-none border-r-0"}>
           <SelectValue placeholder="Category"/>
         </SelectTrigger>
-        <SelectContent>
+        <SelectContent> 
           <SelectGroup>
             {columns.map(col =>
               <SelectItem key={col.value} value={col.value}>
@@ -30,7 +44,7 @@ export const StatsFilter = ({data}: StatsFilterProps) => {
         </SelectContent>
       </Select>
 
-      <Select defaultValue={data.operator} items={operators}>
+      <Select defaultValue={"="} items={operators} onValueChange={(e) => handleParameterChange("operator", e as string | number)}>
         <SelectTrigger className={"w-10 rounded-l-none rounded-r-none border-l-1 [&_svg]:hidden"}>
           <SelectValue placeholder="operator"/>
         </SelectTrigger>
@@ -45,9 +59,9 @@ export const StatsFilter = ({data}: StatsFilterProps) => {
         </SelectContent>
       </Select>
 
-      <Input id="filterValueInput" placeholder="Value" className="rounded-l-none rounded-r-none border-l-0 border-r-0 w-20" />
+      <Input id="filterValueInput" placeholder="Value" className="rounded-l-none rounded-r-none border-l-0 border-r-0 w-20" onChange={(e) => handleParameterChange("value", e.target.value)} />
 
-      <Select defaultValue={data.condition} items={conditions}>
+      <Select defaultValue={"AND"} items={conditions}  onValueChange={(e) => handleParameterChange("condition", e as string | number)} >
         <SelectTrigger className={"w-15 rounded-l-none [&_svg]:hidden"}>
           <SelectValue placeholder="operator"/>
         </SelectTrigger>
