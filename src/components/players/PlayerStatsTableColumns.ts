@@ -5,7 +5,7 @@ export const playerStatsTableColumns = [
   { label: "Age", value: "age", className: "text-right" },
   { label: "GP", value: "gp", className: "text-right" },
   { label: "W", value: "w", className: "text-right" },
-  { label: "L", value: "l", className: "text-right", format: (v: number) => v?.toFixed(1) },
+  { label: "L", value: "l", className: "text-right" },
   { label: "MIN", value: "min", className: "text-right", format: (v: number) => v?.toFixed(1) },
   { label: "PTS", value: "pts", className: "text-right", format: (v: number) => v?.toFixed(1) },
   { label: "FGM", value: "fgm", className: "text-right", format: (v: number) => v?.toFixed(1) },
