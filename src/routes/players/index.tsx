@@ -1,7 +1,5 @@
 import { fetchAllPlayerStats } from '@/api/playerStatsApi'
-import { PlayerStatsHub } from '@/components/players/PlayerStatsHub';
-import { PlayerStatsTable } from '@/components/players/PlayerStatsTable';
-import { ModeToggle } from '@/components/theme/theme-toggle';
+import { PlayerStatsHub } from '@/components/players/PlayerStatsHub'
 import type { PlayerStats } from '@/types/PlayerStats';
 import { queryOptions, useSuspenseQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router'
@@ -22,10 +20,7 @@ function Players() {
   const {data}  = useSuspenseQuery(playerQuery)
   
   return (
-    <div className='p-12'>
-      <ModeToggle />
-      {/* <PlayerCardList data={data as PlayerStats[]} /> */}
-      {/* <PlayerStatsTable data={data as PlayerStats[]} /> */}
+    <div className='p-12'>  
       <PlayerStatsHub data={data as PlayerStats[]}/>
     </div>
   )
