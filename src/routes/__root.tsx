@@ -5,6 +5,7 @@ import appCss from "../styles.css?url"
 import { ThemeProvider } from "@/components/theme/theme-provider"
 import type { QueryClient } from "@tanstack/react-query"
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { Header } from "@/components/header/header"
 
 interface RouterContext {
   queryClient: QueryClient
@@ -41,6 +42,7 @@ function RootDocument({}: { children: React.ReactNode }) {
       </head>
       <body>
         <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+          <Header />
           <Outlet />
           <TanStackDevtools
               config={{
