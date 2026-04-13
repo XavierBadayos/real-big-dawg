@@ -1,6 +1,6 @@
 # Stat Muncher
 
-NBA stats filter and sort.
+NBA stats filter and sort. Now includes true shooting, usage percentage, and pace from advanced stats.
 
 
 ## Getting Started
